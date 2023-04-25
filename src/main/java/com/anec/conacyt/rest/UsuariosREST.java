@@ -4,6 +4,7 @@ package com.anec.conacyt.rest;
 import com.anec.conacyt.modelo.Usuarios;
 import com.anec.conacyt.repositorios.UsuariosRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,4 +51,13 @@ class UsuariosREST {
         return repository.dameUsuariosUsuario(usuario);
     }
 
+    @PostMapping(value = "/login")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Optional<Usuarios> login(@RequestBody Usuarios user) {
+        Optional<Usuarios> resulta = repository.login(user.getUsuario(), user.getPassw());
+        return resulta;
+    }
+    
+    
 }

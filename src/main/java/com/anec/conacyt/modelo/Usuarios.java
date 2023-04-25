@@ -49,7 +49,9 @@ public class Usuarios implements Serializable {
     private String celular;
     @Column(name = "tipo")
     private Integer tipo;
-
+    @Column(name = "role")
+    private String role;
+    
     public Usuarios() {
     }
 
@@ -145,6 +147,17 @@ public class Usuarios implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
