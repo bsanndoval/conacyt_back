@@ -9,9 +9,12 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,7 +22,27 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "vw_registros")
-
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "VwRegistros.findAll", query = "SELECT v FROM VwRegistros v"),
+    @NamedQuery(name = "VwRegistros.findById", query = "SELECT v FROM VwRegistros v WHERE v.id = :id"),
+    @NamedQuery(name = "VwRegistros.findByIdParcela", query = "SELECT v FROM VwRegistros v WHERE v.idParcela = :idParcela"),
+    @NamedQuery(name = "VwRegistros.findByEtapa", query = "SELECT v FROM VwRegistros v WHERE v.etapa = :etapa"),
+    @NamedQuery(name = "VwRegistros.findByEtapaf", query = "SELECT v FROM VwRegistros v WHERE v.etapaf = :etapaf"),
+    @NamedQuery(name = "VwRegistros.findByFecha", query = "SELECT v FROM VwRegistros v WHERE v.fecha = :fecha"),
+    @NamedQuery(name = "VwRegistros.findByActividad", query = "SELECT v FROM VwRegistros v WHERE v.actividad = :actividad"),
+    @NamedQuery(name = "VwRegistros.findByCategoria", query = "SELECT v FROM VwRegistros v WHERE v.categoria = :categoria"),
+    @NamedQuery(name = "VwRegistros.findByCategoriaf", query = "SELECT v FROM VwRegistros v WHERE v.categoriaf = :categoriaf"),
+    @NamedQuery(name = "VwRegistros.findByArvenses", query = "SELECT v FROM VwRegistros v WHERE v.arvenses = :arvenses"),
+    @NamedQuery(name = "VwRegistros.findByPractica", query = "SELECT v FROM VwRegistros v WHERE v.practica = :practica"),
+    @NamedQuery(name = "VwRegistros.findByPracticaf", query = "SELECT v FROM VwRegistros v WHERE v.practicaf = :practicaf"),
+    @NamedQuery(name = "VwRegistros.findByUnidad", query = "SELECT v FROM VwRegistros v WHERE v.unidad = :unidad"),
+    @NamedQuery(name = "VwRegistros.findByUnidadf", query = "SELECT v FROM VwRegistros v WHERE v.unidadf = :unidadf"),
+    @NamedQuery(name = "VwRegistros.findByCantidad", query = "SELECT v FROM VwRegistros v WHERE v.cantidad = :cantidad"),
+    @NamedQuery(name = "VwRegistros.findByPrecio", query = "SELECT v FROM VwRegistros v WHERE v.precio = :precio"),
+    @NamedQuery(name = "VwRegistros.findByIncidencias", query = "SELECT v FROM VwRegistros v WHERE v.incidencias = :incidencias"),
+    @NamedQuery(name = "VwRegistros.findByObservaciones", query = "SELECT v FROM VwRegistros v WHERE v.observaciones = :observaciones"),
+    @NamedQuery(name = "VwRegistros.findByMuestreo", query = "SELECT v FROM VwRegistros v WHERE v.muestreo = :muestreo")})
 public class VwRegistros implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,7 +59,7 @@ public class VwRegistros implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @Column(name = "actividad")
-    private Integer actividad;
+    private String actividad;
     @Column(name = "categoria")
     private Integer categoria;
     @Column(name = "categoriaf")
@@ -105,11 +128,11 @@ public class VwRegistros implements Serializable {
         this.fecha = fecha;
     }
 
-    public Integer getActividad() {
+    public String getActividad() {
         return actividad;
     }
 
-    public void setActividad(Integer actividad) {
+    public void setActividad(String actividad) {
         this.actividad = actividad;
     }
 
