@@ -42,7 +42,7 @@ public class Registros implements Serializable {
     private Date fecha;
     @Basic(optional = false)
     @Column(name = "actividad")
-    private int actividad;
+    private String actividad;
     @Basic(optional = false)
     @Column(name = "categoria")
     private int categoria;
@@ -75,7 +75,7 @@ public class Registros implements Serializable {
         this.id = id;
     }
 
-    public Registros(Integer id, int idParcela, int etapa, Date fecha, int actividad, int categoria, boolean arvenses, int practica, int unidad, int cantidad, int precio) {
+    public Registros(Integer id, int idParcela, int etapa, Date fecha, String actividad, int categoria, boolean arvenses, int practica, int unidad, int cantidad, int precio) {
         this.id = id;
         this.idParcela = idParcela;
         this.etapa = etapa;
@@ -121,11 +121,11 @@ public class Registros implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getActividad() {
+    public String getActividad() {
         return actividad;
     }
 
-    public void setActividad(int actividad) {
+    public void setActividad(String actividad) {
         this.actividad = actividad;
     }
 
