@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface VwRegistrosRepository extends CrudRepository<VwRegistros, Integer> {
-    @Query(value = "select * from vw_registros r where r.id_parcela = :parcela", nativeQuery = true)
+    @Query(value = "select * from vw_registros r where r.id_parcela = :parcela order by r.etapa, r.fecha", nativeQuery = true)
     List<VwRegistros> dameRegistrosParcela(@Param("parcela") Integer parcela);
 }

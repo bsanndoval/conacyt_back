@@ -1,13 +1,6 @@
 package com.anec.conacyt.repositorios;
 
 import com.anec.conacyt.modelo.Registros;
-import com.anec.conacyt.modelo.Usuarios;
-import com.anec.conacyt.modelo.Parcelas;
-import com.anec.conacyt.modelo.CatEtapasFenologicas;
-import com.anec.conacyt.modelo.CatCategorias;
-import com.anec.conacyt.modelo.CatUnidades;
-import com.anec.conacyt.modelo.CatPracticas;
-import com.anec.conacyt.modelo.Predios;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;

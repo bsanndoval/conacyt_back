@@ -1,7 +1,6 @@
 package com.anec.conacyt.rest;
 
 
-import com.anec.conacyt.modelo.Predios;
 import com.anec.conacyt.modelo.Registros;
 import com.anec.conacyt.modelo.view.VwRegistros;
 import com.anec.conacyt.repositorios.RegistrosRepository;
@@ -19,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 /**
  *
@@ -49,6 +49,12 @@ class RegistrosREST {
     public List<VwRegistros> dameRegistrosParcela(@PathVariable("parcela") Integer parcela) {
         return vwRepo.dameRegistrosParcela(parcela);
     }
+    
+    
+    @GetMapping(value = "/delete/{registro}")
+    public void delRegistro(@PathVariable("registro") Integer registro) {
+        repo.deleteById(registro);
+    } 
 
 }
 
