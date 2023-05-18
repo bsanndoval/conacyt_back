@@ -33,4 +33,8 @@ public interface RegistrosRepository extends CrudRepository<Registros, Integer> 
             + " inner join cat_unidades u on u.id = r.unidad\n"
             + " where r.id_parcela = :parcela", nativeQuery = true)
     List<Registros> dameRegistrosParcela(@Param("parcela") Integer parcela);
+  
+    
+        
+    
 }

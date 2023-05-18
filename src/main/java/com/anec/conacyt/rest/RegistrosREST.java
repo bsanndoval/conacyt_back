@@ -3,8 +3,10 @@ package com.anec.conacyt.rest;
 
 import com.anec.conacyt.modelo.Registros;
 import com.anec.conacyt.modelo.view.VwRegistros;
+import com.anec.conacyt.modelo.view.VwCostosEtapa;
 import com.anec.conacyt.repositorios.RegistrosRepository;
 import com.anec.conacyt.repositorios.view.VwRegistrosRepository;
+import com.anec.conacyt.repositorios.view.VwCostosEtapaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,9 +35,13 @@ class RegistrosREST {
     @Autowired
     private RegistrosRepository repo;
     
-     @Autowired
+    @Autowired
     private VwRegistrosRepository vwRepo;
-
+    
+    @Autowired
+    private VwCostosEtapaRepository vwCostos;
+     
+   
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -51,10 +57,18 @@ class RegistrosREST {
     }
     
     
+    @GetMapping(value = "/costosEtapa/{parcela}")
+    @ResponseBody
+    public List<VwCostosEtapa> dameCostosEtapa(@PathVariable("parcela") Integer parcela) {
+        return vwCostos.dameCostosEtapa(parcela);
+    }
+    
+   
     @GetMapping(value = "/delete/{registro}")
     public void delRegistro(@PathVariable("registro") Integer registro) {
         repo.deleteById(registro);
     } 
+    
 
 }
 
