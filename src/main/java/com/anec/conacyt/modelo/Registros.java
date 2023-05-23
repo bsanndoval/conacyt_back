@@ -60,7 +60,7 @@ public class Registros implements Serializable {
     private int cantidad;
     @Basic(optional = false)
     @Column(name = "precio")
-    private int precio;
+    private float precio;
     @Column(name = "incidencias")
     private String incidencias;
     @Column(name = "observaciones")
@@ -75,7 +75,7 @@ public class Registros implements Serializable {
         this.id = id;
     }
 
-    public Registros(Integer id, int idParcela, int etapa, Date fecha, String actividad, int categoria, boolean arvenses, int practica, int unidad, int cantidad, int precio) {
+    public Registros(Integer id, int idParcela, int etapa, Date fecha, String actividad, int categoria, boolean arvenses, int practica, int unidad, int cantidad, float precio) {
         this.id = id;
         this.idParcela = idParcela;
         this.etapa = etapa;
@@ -169,11 +169,11 @@ public class Registros implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

@@ -27,6 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "VwRegistros.findAll", query = "SELECT v FROM VwRegistros v"),
     @NamedQuery(name = "VwRegistros.findById", query = "SELECT v FROM VwRegistros v WHERE v.id = :id"),
     @NamedQuery(name = "VwRegistros.findByIdParcela", query = "SELECT v FROM VwRegistros v WHERE v.idParcela = :idParcela"),
+    @NamedQuery(name = "VwRegistros.findByIdtip", query = "SELECT v FROM VwRegistros v WHERE v.idtip = :idtip"),
+    @NamedQuery(name = "VwRegistros.findByTipo", query = "SELECT v FROM VwRegistros v WHERE v.tipo = :tipo"),
     @NamedQuery(name = "VwRegistros.findByEtapa", query = "SELECT v FROM VwRegistros v WHERE v.etapa = :etapa"),
     @NamedQuery(name = "VwRegistros.findByEtapaf", query = "SELECT v FROM VwRegistros v WHERE v.etapaf = :etapaf"),
     @NamedQuery(name = "VwRegistros.findByFecha", query = "SELECT v FROM VwRegistros v WHERE v.fecha = :fecha"),
@@ -51,6 +53,10 @@ public class VwRegistros implements Serializable {
     private Integer id;
     @Column(name = "id_parcela")
     private Integer idParcela;
+    @Column(name = "idtip")
+    private Integer idtip;
+    @Column(name = "tipo")
+    private String tipo;
     @Column(name = "etapa")
     private Integer etapa;
     @Column(name = "etapaf")
@@ -76,8 +82,9 @@ public class VwRegistros implements Serializable {
     private String unidadf;
     @Column(name = "cantidad")
     private Integer cantidad;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio")
-    private Integer precio;
+    private Double precio;
     @Column(name = "incidencias")
     private String incidencias;
     @Column(name = "observaciones")
@@ -102,6 +109,22 @@ public class VwRegistros implements Serializable {
 
     public void setIdParcela(Integer idParcela) {
         this.idParcela = idParcela;
+    }
+
+    public Integer getIdtip() {
+        return idtip;
+    }
+
+    public void setIdtip(Integer idtip) {
+        this.idtip = idtip;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public Integer getEtapa() {
@@ -200,11 +223,11 @@ public class VwRegistros implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Integer getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 

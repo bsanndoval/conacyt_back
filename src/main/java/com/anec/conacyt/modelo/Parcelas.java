@@ -52,7 +52,7 @@ public class Parcelas implements Serializable {
     private int idPredio;
     @Basic(optional = false)
     @Column(name = "tipo")
-    private String tipo;
+    private int tipo;
     @Basic(optional = false)
     @Column(name = "anio")
     private int anio;
@@ -78,7 +78,7 @@ public class Parcelas implements Serializable {
         this.id = id;
     }
 
-    public Parcelas(Integer id, int idPredio, String tipo, int anio, String ciclo) {
+    public Parcelas(Integer id, int idPredio, int tipo, int anio, String ciclo) {
         this.id = id;
         this.idPredio = idPredio;
         this.tipo = tipo;
@@ -102,11 +102,11 @@ public class Parcelas implements Serializable {
         this.idPredio = idPredio;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 

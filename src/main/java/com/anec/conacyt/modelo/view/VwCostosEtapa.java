@@ -5,7 +5,6 @@
 package com.anec.conacyt.modelo.view;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,13 +22,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "VwCostosEtapa.findAll", query = "SELECT v FROM VwCostosEtapa v"),
+    @NamedQuery(name = "VwCostosEtapa.findById", query = "SELECT v FROM VwCostosEtapa v WHERE v.id = :id"),
     @NamedQuery(name = "VwCostosEtapa.findByIdParcela", query = "SELECT v FROM VwCostosEtapa v WHERE v.idParcela = :idParcela"),
     @NamedQuery(name = "VwCostosEtapa.findByEtapa", query = "SELECT v FROM VwCostosEtapa v WHERE v.etapa = :etapa"),
     @NamedQuery(name = "VwCostosEtapa.findByEtap", query = "SELECT v FROM VwCostosEtapa v WHERE v.etap = :etap"),
+    @NamedQuery(name = "VwCostosEtapa.findByIdtip", query = "SELECT v FROM VwCostosEtapa v WHERE v.idtip = :idtip"),
+    @NamedQuery(name = "VwCostosEtapa.findByTipo", query = "SELECT v FROM VwCostosEtapa v WHERE v.tipo = :tipo"),
     @NamedQuery(name = "VwCostosEtapa.findByCosto", query = "SELECT v FROM VwCostosEtapa v WHERE v.costo = :costo")})
 public class VwCostosEtapa implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Column(name = "id")
+    private String id;
     @Column(name = "id_parcela")
     private Integer idParcela;
     @Column(name = "etapa")
@@ -37,10 +41,23 @@ public class VwCostosEtapa implements Serializable {
     private Integer etapa;
     @Column(name = "etap")
     private String etap;
+    @Column(name = "idtip")
+    private Integer idtip;
+    @Column(name = "tipo")
+    private String tipo;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "costo")
-    private BigInteger costo;
+    private Double costo;
 
     public VwCostosEtapa() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getIdParcela() {
@@ -67,11 +84,27 @@ public class VwCostosEtapa implements Serializable {
         this.etap = etap;
     }
 
-    public BigInteger getCosto() {
+    public Integer getIdtip() {
+        return idtip;
+    }
+
+    public void setIdtip(Integer idtip) {
+        this.idtip = idtip;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Double getCosto() {
         return costo;
     }
 
-    public void setCosto(BigInteger costo) {
+    public void setCosto(Double costo) {
         this.costo = costo;
     }
     

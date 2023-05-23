@@ -1,5 +1,6 @@
 package com.anec.conacyt.repositorios;
 
+import com.anec.conacyt.modelo.CatAcciMici;
 import com.anec.conacyt.modelo.Parcelas;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;

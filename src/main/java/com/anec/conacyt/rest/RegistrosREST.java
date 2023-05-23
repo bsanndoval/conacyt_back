@@ -32,7 +32,7 @@ class RegistrosREST {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrosREST.class);
 
-    @Autowired
+   @Autowired
     private RegistrosRepository repo;
     
     @Autowired
@@ -45,11 +45,12 @@ class RegistrosREST {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
+      
     public Registros create(@RequestBody Registros resource) {
         Registros resulta = repo.save(resource);
         return resulta;
     }
-    
+   
     @GetMapping(value = "/bitacora/{parcela}")
     @ResponseBody
     public List<VwRegistros> dameRegistrosParcela(@PathVariable("parcela") Integer parcela) {
@@ -57,7 +58,7 @@ class RegistrosREST {
     }
     
     
-    @GetMapping(value = "/costosEtapa/{parcela}")
+  @GetMapping(value = "/costosEtapa/{parcela}")
     @ResponseBody
     public List<VwCostosEtapa> dameCostosEtapa(@PathVariable("parcela") Integer parcela) {
         return vwCostos.dameCostosEtapa(parcela);
@@ -68,7 +69,7 @@ class RegistrosREST {
     public void delRegistro(@PathVariable("registro") Integer registro) {
         repo.deleteById(registro);
     } 
-    
+     
 
 }
 

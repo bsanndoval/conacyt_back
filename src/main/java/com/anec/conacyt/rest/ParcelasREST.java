@@ -1,8 +1,9 @@
 package com.anec.conacyt.rest;
 
 import com.anec.conacyt.modelo.Parcelas;
-import com.anec.conacyt.modelo.Predios;
+import com.anec.conacyt.modelo.view.VwParcelas;
 import com.anec.conacyt.repositorios.ParcelasRepository;
+import com.anec.conacyt.repositorios.view.VwParcelasRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,9 @@ class ParcelasREST {
 
     @Autowired
     private ParcelasRepository repository;
+    
+     @Autowired
+    private VwParcelasRepository vwParcelas;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -54,5 +58,14 @@ class ParcelasREST {
     public List<Parcelas> dameParcelasPredio(@PathVariable("predio") Integer predio) {
         return repository.dameParcelasPredio(predio);
     }
+    
+    @GetMapping(value = "/parcelasvw/{predio}")
+    @ResponseBody
+    public List<VwParcelas> dameVwParcelasPredio(@PathVariable("predio") Integer predio) {
+        return vwParcelas.dameVwParcelasPredio(predio);
+        
+        
+    }
 
 }
+
