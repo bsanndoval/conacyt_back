@@ -66,6 +66,14 @@ class ParcelasREST {
         
         
     }
+    
+    @GetMapping(value = "/parcelavw/{parcela}")
+    @ResponseBody
+    public List<VwParcelas> dameVwParcela(@PathVariable("parcela") Integer parcela) {
+        return vwParcelas.dameVwParcela(parcela);
+        
+        
+    }
 
 }
 

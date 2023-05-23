@@ -20,5 +20,8 @@ import org.springframework.stereotype.Repository;
 public interface VwParcelasRepository extends CrudRepository<VwParcelas, Integer> {
     @Query(value = "select * from vw_parcelas p where p.id_predio = :predio order by p.idtip", nativeQuery = true)
     List<VwParcelas> dameVwParcelasPredio(@Param("predio") Integer predio);
+    
+     @Query(value = "select * from vw_parcelas p where p.id = :parcela", nativeQuery = true)
+    List<VwParcelas> dameVwParcela(@Param("parcela") Integer parcela);
 }
 
